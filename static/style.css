@@ -1,0 +1,158 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F5F5F5;
+    padding: 20px;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    color: #4F4F4F;
+}
+
+.post {
+    display: flex;
+    background-color: #FFF;
+    border: 1px solid #DDD;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.post h2 {
+    margin-top: 0;
+}
+
+.post p {
+    margin: 10px 0;
+}
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+    margin-top: 20px;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+p{
+margin: 0em 0 24px 0;
+}
+textarea {
+    resize: vertical; /* Allow only vertical resizing */
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Style for the delete button */
+.delete-button {
+    background-color: #e74c3c; /* Red color for delete button */
+    color: #fff; /* White text color */
+    border: none; /* Remove border */
+    padding: 8px 16px; /* Add padding */
+    border-radius: 4px; /* Add border radius for rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    font-size: 14px; /* Set font size */
+}
+
+/* Hover effect for the delete button */
+.delete-button:hover {
+    background-color: #c0392b; /* Darker red color on hover */
+}
+
+/* Style for the delete button */
+.update-button {
+    background-color: #1abc9c; /* Red color for delete button */
+    color: #fff; /* White text color */
+    border: none; /* Remove border */
+    padding: 8px 16px; /* Add padding */
+    border-radius: 4px; /* Add border radius for rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    font-size: 14px; /* Set font size */
+}
+
+/* Hover effect for the delete button */
+.update-button:hover {
+    background-color: #16a085; /* Darker red color on hover */
+}
+
+/* Optional: Style the div to make it look clickable */
+.post-link {
+    color: inherit; /* Use the inherited color */
+    text-decoration: none; /* Remove underline */
+    cursor: pointer; /* Use pointer cursor on hover */
+    transition: box-shadow 0.3s ease;
+}
+
+.post:hover {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.content {
+    display: block;
+}
+.article {
+    padding-left: 25%;
+    padding-right: 25%;
+}
+.cover-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border: 1px #000;
+    border-radius: 0;
+    padding-left: 0;
+    line-height: 10px;
+}
+
+img {
+    display: inline-block;
+}
+
+.post-title {
+    margin: 20px;
+}
+
+.post-content {
+    margin: 20px;
+}
+
+.post-controls {
+
+}
+
+.medium-thumbnail {
+    margin: 10px;
+    width: 250px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
