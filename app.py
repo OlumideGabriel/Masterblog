@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
+from datetime import datetime
 import json
 import uuid
 import os
@@ -53,6 +54,8 @@ def add():
             image_filename = os.path.join('static/uploads', image_file.filename)
             image_file.save(image_filename)
 
+            image_file = os.path.join('uploads', image_file.filename)
+
             blog_posts = read_data()
             post_id = str(generate_random_id())  # Assigning post ID
 
@@ -60,7 +63,8 @@ def add():
                                "author": author,
                                "title": title,
                                "content": content,
-                               "image": image_filename  # Add the image filename or path to the dictionary
+                               "image": image_file,  # Add the image filename or path to the dictionary
+                               "time-added": datetime.now().strftime("%B %d, %Y")
                                })
             # Write updated data back to JSON file
             write_data(blog_posts)
@@ -104,10 +108,18 @@ def update(post_id):
                 post["title"] = request.form['title']
                 post["content"] = request.form['content']
 
-        # Write updated data back to JSON file
-        write_data(blog_posts)
-        # Redirect back to the homepage
-        return redirect(url_for('index'))
+                # Check if an image was uploaded
+                if 'image' in request.files:
+                    image_file = request.files['image']
+                    if image_file.filename != '':
+                        # Save the uploaded image
+                        image_filename = os.path.join('static/uploads', image_file.filename)
+                        image_file.save(image_filename)
+                        post['image'] = os.path.join('uploads', image_file.filename)
+
+                    # Write updated data back to JSON file
+                    write_data(blog_posts)
+                    return redirect(url_for('index'))
 
         # Redirect back to index
     # Else, it's a GET request
@@ -135,11 +147,26 @@ def post_likes(post_id):
             else:
                 post["likes"] += 1
 
-        # Write updated data back to JSON file
-        write_data(blog_posts)
-        return render_template('blog_post.html', post=post)
+            # Write updated data back to JSON file
+            write_data(blog_posts)
+            return render_template('blog_post.html', post=post)
     # Redirect back to the homepage
     return redirect(url_for('index'))
+
+
+@app.route('/new-category', methods=['GET', 'POST'])
+def new_category():
+    if request.method == 'POST':
+        category = request.form['category']
+        blog_posts = read_data()
+        for post in blog_posts:
+            if category not in post:
+                post[category] = ""
+
+        # Write updated data back to JSON file
+        write_data(blog_posts)
+    # Redirect back to the homepage
+    return render_template('category.html')
 
 
 # Route for handling 404 errors
@@ -158,6 +185,12 @@ def internal_server_error(error):
 @app.errorhandler(400)
 def internal_server_error(error):
     return render_template('400.html'), 400
+
+
+# Custom error handler for FileNotFoundError
+@app.errorhandler(FileNotFoundError)
+def handle_file_not_found_error(error):
+    return render_template('405.html'), 405
 
 
 if __name__ == '__main__':

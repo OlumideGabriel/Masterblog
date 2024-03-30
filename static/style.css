@@ -7,16 +7,25 @@ body {
 
 h1 {
     text-align: center;
-    color: #4F4F4F;
+    color: black;
+    font-family: sans-serif;
+    font-size: 3.6rem;
+    font-weight: 500;
+}
+.all-posts {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .post {
-    display: flex;
     background-color: #FFF;
     border: 1px solid #DDD;
-    padding: 20px;
-    margin-bottom: 20px;
     border-radius: 8px;
+    padding: 5px;
+    flex: 1 0 30%;
+    margin: 10px;
+    max-width: 500px;
 }
 
 .post h2 {
@@ -128,8 +137,9 @@ button:hover {
     height: 400px;
     object-fit: cover;
     border: 1px #000;
-    border-radius: 0;
-    padding-left: 0;
+    border-radius: 8px;
+    padding: 0px;
+    margin: 20px 0;
     line-height: 10px;
 }
 
@@ -137,8 +147,19 @@ img {
     display: inline-block;
 }
 
+img .cover-image {
+    display: inline-block;
+    border-radius: 20px;
+}
+
 .post-title {
     margin: 20px;
+    color: black;
+}
+.post-title h2 {
+    font-family: sans-serif;
+    font-size: 1.8rem;
+    font-weight: 500;
 }
 
 .post-content {
@@ -148,11 +169,92 @@ img {
 .post-controls {
 
 }
+.article-body {
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.small-thumbnail {
+    margin: 20px 0 -5px 0;
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+}
 
 .medium-thumbnail {
     margin: 10px;
-    width: 250px;
-    height: 200px;
+    width: 95%;
+    height: 240px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 5px;
+    justify-content: center;
+}
+
+button.like_button {
+    display: block;
+    width: 60px;
+    text-align: center;
+    background-color: #28282B;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+}
+
+.like_button:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+ul.no-bullets {
+    list-style-type: none;
+}
+ul.nav-list {
+    justify-content: center;
+    text-align: center;
+    display: flex;
+}
+.nav-item a {
+    color: #000;
+    margin: 0 20px;
+    text-decoration: none; /* Remove underline */
+    cursor: pointer; /* Use pointer cursor on hover */
+}
+
+.nav-item {
+    font-size: 20px;
+    padding:  10px 5px;
+    border-bottom: 2px solid rgb(0,0,0,0);
+}
+
+.nav-item:hover {
+    border-bottom: 2px solid tomato;
+}
+.article-meta {
+    text-align: center;
+}
+
+.no-style-form {
+    padding: 0px;
+    margin: 0px;
+    display: inline-block;
+}
+/* Footer container */
+.footer {
+    margin-top: 100px;
+    color: #333; /* Text color */
+    padding: 20px; /* Padding around content */
+    text-align: center; /* Center-align text */
+}
+
+/* Links within the footer */
+.footer a {
+    color: #fff; /* Link text color */
+    text-decoration: none; /* Remove default underline */
+}
+
+/* Style for footer heading */
+.footer h4 {
+    margin-bottom: 10px; /* Bottom margin for heading */
 }

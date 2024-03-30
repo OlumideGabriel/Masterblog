@@ -12,8 +12,12 @@
         <label for="title">Title:</label>
         <input type="text" id="title" name="title" value="{{ post['title'] }}" required>
 
-        <label for="image">Image:</label>
-        <input type="file" id="image" name="image"  class="form-control" autocomplete="off" required><br><br>
+        <!-- Display the current image -->
+        <img class="small-thumbnail" src="/static/{{ post['image'] }}" alt="Current Image">
+
+        <!-- Provide an option to change the image -->
+        <label for="image">Update Image:</label>
+        <input type="file" id="image" name="image" class="form-control" autocomplete="off" accept="image/*"><br><br>
 
         <label for="author">Author:</label>
         <input type="text" id="author" name="author" value="{{ post['author'] }}" required>

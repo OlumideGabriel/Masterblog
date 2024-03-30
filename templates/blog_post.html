@@ -9,9 +9,8 @@
 <body>
     <header class="header">
         <div class="container">
-            <h1 class="logo">My Blog</h1>
             <nav class="navigation">
-                <ul class="nav-list">
+                <ul class="nav-list no-bullets">
                     <li class="nav-item"><a href="/">Home</a></li>
                     <li class="nav-item"><a href="/about">About</a></li>
                     <li class="nav-item"><a href="/contact">Contact</a></li>
@@ -23,16 +22,18 @@
     <main class="content">
         <article class="article">
             <header class="article-header">
-                <h2 class="article-title">{{ post['title'] }}</h2>
-                <p class="article-meta">By {{ post['author'] }} | {{ post['date'] }}</p>
-                <!--Like button-->
-                <form action="/like/{{ post['id'] }}" method="post">
-                    <input type="hidden" name="post_id" value="{{ post['id'] }}">
-                    <button class="like_button" type="submit">👍 {{ post["likes"] }}</button>
-                </form>
-                <img class="cover-image" src="{{ url_for('static', filename=post['image']) }}" width="700" height="300"><!--Blog image-->
+                <h1 class="article-title">{{ post['title'] }}</h1>
+                <div class="article-meta">
+                    <p>By {{ post['author'] }} | {{ post['time-added'] }} </p>
+                    <!--Like button-->
+                    <form class="no-style-form" action="/like/{{ post['id'] }}" method="post">
+                        <input type="hidden" name="post_id" value="{{ post['id'] }}">
+                        <button class="like_button" type="submit">👍 {{ post["likes"] }}</button>
+                    </form>
+                </div>
             </header>
             <div class="article-body">
+                <img class="cover-image" src="{{ url_for('static', filename=post['image']) }}"><!--Blog image-->
                 <p>{{ post['content'] }}</p>
             </div>
         </article>
