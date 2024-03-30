@@ -31,8 +31,12 @@
                 <p><em>Written by {{ post['author'] }}</em></p>
             </div>
             <div class="post-content">
-                <p>{{ post['content'] }}</p>
+                {% set words = post['content'].split() %}
+                {% set reduced_words = words[:25] %}
+                {% set reduced_blog_post = ' '.join(reduced_words) %}
+                <p>{{ reduced_blog_post }}</p>
             </div>
+
             <div class="post-controls">
                 <!--Delete button-->
                 <form action="/delete/{{ post['id'] }}" method="post">
