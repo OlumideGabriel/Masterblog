@@ -161,12 +161,45 @@ def new_category():
         blog_posts = read_data()
         for post in blog_posts:
             if category not in post:
-                post[category] = ""
+                post[category.lower()] = ""
 
         # Write updated data back to JSON file
         write_data(blog_posts)
+        # Redirect back to the categories
+        return redirect(url_for('categories'))
     # Redirect back to the homepage
     return render_template('category.html')
+
+
+@app.route('/del/<category>', methods=['POST'])
+def del_category(category):
+    blog_posts = read_data()
+    for post in blog_posts:
+        if category in post:
+            # Redirect back to the categories
+            return redirect(url_for('categories'))
+
+
+@app.route('/categories', methods=['GET', 'POST'])
+def categories():
+    not_allowed = ['id', 'image']
+    blog_posts = read_data()
+    if request.method == 'POST':
+        # Write updated data back to JSON file
+        write_data(blog_posts)
+
+    else:
+        if isinstance(blog_posts, list) and all(isinstance(item, dict) for item in blog_posts):
+            # Print keys of each dictionary
+            for item in blog_posts:
+                post_categories = (list(item.keys()))
+                for category in not_allowed:
+                    if category in post_categories:
+                        post_categories.remove(category)
+                    print(post_categories)
+                return render_template('categories.html', categories=post_categories, posts=blog_posts)
+        # Redirect back to the homepage
+    return render_template('categories.html', posts=blog_posts)
 
 
 # Route for handling 404 errors

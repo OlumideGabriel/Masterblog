@@ -258,3 +258,56 @@ ul.nav-list {
 .footer h4 {
     margin-bottom: 10px; /* Bottom margin for heading */
 }
+.all-categories {
+    padding-bottom: 90px;
+
+}
+.items {
+    display: flex;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #ffg;
+    margin: 10px 0;
+    padding: 20px;
+}
+
+.item-list-controls button {
+    margin: 0px;
+}
+
+.item-list-controls form{
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 0;
+    border-radius: 5px;
+}
+
+.action-link {
+    display: inline-flex;
+    font-size: 19px;
+    color: rgb(25, 103, 210);
+    gap: 5px;
+    white-space: nowrap;
+    padding: 20px;
+    justify-content: center; /* Center items horizontally */
+    align-items: center;
+    background-color: rgb(25, 103, 210, 0.25);
+    border: 1px solid rgb(25, 103, 210);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+}
+
+.action-link:hover {
+    background-color: rgb(25, 103, 210, 0.3);
+}
+.icon {
+    width: 20px;
+}
+
+.icon-color {
+    fill: tomato;
+}
+.icon-link {
+    text-decoration: None;
+}

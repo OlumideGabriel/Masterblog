@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navigation">
+                <ul class="nav-list no-bullets">
+                    <li class="nav-item"><a href="/">Home</a></li>
+                    <li class="nav-item"><a href="/about">About</a></li>
+                    <li class="nav-item"><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <h1>Categories</h1>
+
+    <div class="all-categories" >
+        <a href="/new-category" class="icon-link">
+            <div class="action-link">
+                 <span>Add New Category</span>
+                 <img class="icon" src="{{ url_for('static', filename='uploads/icons/icons8-plus.svg') }}" >
+            </div>
+        </a>
+        <div class="item-list">
+
+            {% for category in categories %}
+             <div class="items">
+                 <h2 class="post-title"> {{ category.title() }}</h2>
+
+                 <div class="item-list-controls">
+                    <!--Delete button-->
+                    <form action="/del/{{ category }}" method="post">
+                        <input type="hidden" name="category" value='{{ category }}'>
+                        <button class="delete-button" type="submit">Delete</button>
+                    </form>
+                 </div>
+                    <!--Update button-->
+                 <div class="item-list-controls">
+                    <form action="/update/" method="get">
+                        <input type="hidden" name="post_id" >
+                        <button class="update-button" type="submit">Update</button>
+                    </form>
+                </div>
+             </div>
+            {% endfor %}
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 My Blog. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
