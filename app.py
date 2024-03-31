@@ -176,8 +176,13 @@ def del_category(category):
     blog_posts = read_data()
     for post in blog_posts:
         if category in post:
-            # Redirect back to the categories
-            return redirect(url_for('categories'))
+            del post[category]
+
+    # Write updated data back to JSON file
+    write_data(blog_posts)
+
+    # Redirect back to the categories
+    return redirect(url_for('categories'))
 
 
 @app.route('/categories', methods=['GET', 'POST'])
