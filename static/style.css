@@ -456,6 +456,7 @@ ul.nav-list {
 
 .list-post-title {
     min-width: 400px;
+    border-right: 1px solid #F5F5F5;
 }
 .items a {
     text-decoration: none;
