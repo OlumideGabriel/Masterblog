@@ -64,12 +64,13 @@ def add():
                                "title": title,
                                "content": content,
                                "image": image_file,  # Add the image filename or path to the dictionary
-                               "time-added": datetime.now().strftime("%B %d, %Y")
+                               "time-added": datetime.now().strftime("%B %d, %Y"),
+                               "likes": 0
                                })
             # Write updated data back to JSON file
             write_data(blog_posts)
 
-        return redirect(url_for('index'))
+        return redirect(url_for('all_posts'))
     return render_template('add.html')
 
 
@@ -85,10 +86,10 @@ def delete_post(post_id):
         # Write updated data back to JSON file
         write_data(blog_posts)
         # Redirect back to the homepage
-        return redirect(url_for('index'))
+        return redirect(url_for('all_posts'))
     else:
         # If the request method is not POST, redirect to homepage
-        return redirect(url_for('index'))
+        return redirect(url_for('all_posts'))
 
 
 @app.route('/update/<post_id>', methods=['GET', 'POST'])
@@ -119,7 +120,7 @@ def update(post_id):
 
                     # Write updated data back to JSON file
                     write_data(blog_posts)
-                    return redirect(url_for('index'))
+                    return redirect(url_for('all_posts'))
 
         # Redirect back to index
     # Else, it's a GET request
@@ -158,10 +159,13 @@ def post_likes(post_id):
 def new_category():
     if request.method == 'POST':
         category = request.form['category']
+        value = request.form['value']
         blog_posts = read_data()
         for post in blog_posts:
             if category not in post:
-                post[category.lower()] = ""
+                post[category.lower()] = value
+            else:
+                return redirect(url_for('categories'))
 
         # Write updated data back to JSON file
         write_data(blog_posts)
@@ -207,6 +211,12 @@ def categories():
     return render_template('categories.html', posts=blog_posts)
 
 
+@app.route('/posts')
+def all_posts():
+    blog_posts = read_data()
+    return render_template('posts.html', posts=blog_posts)
+
+
 # Route for handling 404 errors
 @app.errorhandler(404)
 def page_not_found(error):
@@ -232,4 +242,4 @@ def handle_file_not_found_error(error):
 
 
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    app.run(port=5000, host='0.0.0.0', debug=True)

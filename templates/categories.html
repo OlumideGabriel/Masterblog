@@ -7,24 +7,24 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <nav class="navigation">
-                <ul class="nav-list no-bullets">
-                    <li class="nav-item"><a href="/">Home</a></li>
-                    <li class="nav-item"><a href="/about">About</a></li>
-                    <li class="nav-item"><a href="/contact">Contact</a></li>
-                </ul>
-            </nav>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="{{ url_for('static', filename='uploads/masterblog logo.png') }}" >
+            <h2>MasterBlog</h2>
         </div>
-    </header>
+        <ul>
+            <li><a href="/"><img src="{{ url_for('static', filename='uploads/icons/website.png') }}" >View Blog</a></li>
+            <li><a href="/posts"><img src="{{ url_for('static', filename='uploads/icons/content.png') }}" >Posts</a></li>
+            <li><a href="/categories">
+                <img src="{{ url_for('static', filename='uploads/icons/category.png') }}" >Categories</a></li>
+        </ul>
+    </div>
 
-    <h1>Categories</h1>
-
-    <div class="all-categories" >
+    <div class="content" >
+        <h1>Categories</h1>
         <a href="/new-category" class="icon-link">
             <div class="action-link">
-                 <span>Add New Category</span>
+                 <span>New Category</span>
                  <img class="icon" src="{{ url_for('static', filename='uploads/icons/icons8-plus.svg') }}" >
             </div>
         </a>
@@ -35,19 +35,18 @@
                  <h2 class="post-title"> {{ category.title() }}</h2>
 
                  <div class="item-list-controls">
-                    <!--Delete button-->
+                     <!--Update button-->
+                     <form action="/update/" method="get">
+                        <input type="hidden" name="post_id" >
+                        <button class="update-button" type="submit">Update</button>
+                    </form>
+
                     <form action="/del/{{ category }}" method="post">
                         <input type="hidden" name="category" value='{{ category }}'>
                         <button class="delete-button" type="submit">Delete</button>
                     </form>
                  </div>
                     <!--Update button-->
-                 <div class="item-list-controls">
-                    <form action="/update/" method="get">
-                        <input type="hidden" name="post_id" >
-                        <button class="update-button" type="submit">Update</button>
-                    </form>
-                </div>
              </div>
             {% endfor %}
         </div>

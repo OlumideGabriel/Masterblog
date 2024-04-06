@@ -5,8 +5,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-        <h1 class="error">Error 404 😞</h1>
-        <p>Sorry, the page you are looking for could not be found.</p>
-        <button onclick="window.location.href='/'">Go back to Home page</button>
+    <div class="error">
+        <h1 class="large-text">Error 404</h1>
+        <h2>Page Not Found.</h2>
+        <div>
+            <button onclick="window.location.href='/'">Go back to Home page</button>
+        </div>
+    </div>
 </body>
 </html>

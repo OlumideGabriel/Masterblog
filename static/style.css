@@ -12,6 +12,20 @@ h1 {
     font-size: 3.6rem;
     font-weight: 500;
 }
+
+h1.large-text{
+    font-size: 8rem;
+    font-weight: 600;
+}
+
+h2 {
+    text-align: center;
+    color: black;
+    font-family: sans-serif;
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
 .all-posts {
     display: flex;
     justify-content: center;
@@ -156,6 +170,7 @@ img .cover-image {
     margin: 20px;
     color: black;
 }
+
 .post-title h2 {
     font-family: sans-serif;
     font-size: 1.8rem;
@@ -166,9 +181,6 @@ img .cover-image {
     margin: 20px;
 }
 
-.post-controls {
-
-}
 .article-body {
     font-size: 16px;
     line-height: 1.8;
@@ -188,6 +200,12 @@ img .cover-image {
     object-fit: cover;
     border-radius: 5px;
     justify-content: center;
+}
+.image-list {
+    min-width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
 }
 
 button.like_button {
@@ -211,9 +229,8 @@ ul.no-bullets {
     list-style-type: none;
 }
 ul.nav-list {
-    justify-content: center;
-    text-align: center;
     display: flex;
+
 }
 .nav-item a {
     color: #000;
@@ -230,6 +247,16 @@ ul.nav-list {
 
 .nav-item:hover {
     border-bottom: 2px solid tomato;
+}
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%; /* Set the maximum width to 100% of the viewport width */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 0 20px; /* Optional padding to ensure content does not touch edges */
+    box-sizing: border-box;
+
 }
 .article-meta {
     text-align: center;
@@ -264,11 +291,17 @@ ul.nav-list {
 }
 .items {
     display: flex;
+    justify-content: space-between;
     background-color: #fff;
     border-radius: 8px;
     border: 1px solid #ffg;
     margin: 10px 0;
     padding: 20px;
+}
+
+.item-list-controls {
+    display: flex;
+    gap: 10px;
 }
 
 .item-list-controls button {
@@ -310,4 +343,121 @@ ul.nav-list {
 }
 .icon-link {
     text-decoration: None;
+}
+.error {
+    margin: 0 auto;
+}
+
+.sidebar {
+    width: 240px;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 20px;
+    margin-right: 50px;
+    border: solid 1px #EAEDE3;
+
+}
+
+.sidebar-header {
+    display: inline-flex;
+    height: 60px;
+    margin-bottom: 40px;
+    gap: 5px;
+    text-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+
+}
+.sidebar-header img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: red;
+}
+
+.sidebar-header h2 {
+    font-weight: 550;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+    padding: 0;
+    justify-content: center;
+
+}
+
+.sidebar ul li a {
+    display: block;
+    display: flex;
+    text-decoration: none;
+    color: #333;
+    padding: 20px 15px;
+    font-size: 18px;
+    font-decoration: bold;
+    border-radius: 8px;
+    background-color: white;
+    align-items: center;
+    text-wrap: nowrap;
+    gap: 15px;
+}
+.sidebar ul li a:hover {
+    color: #333;
+    border-radius: 8px;
+    background-color: #D1E1EF;
+}
+
+.sidebar ul li a:active {
+    background-color: #D1E1EF;
+}
+
+.sidebar ul li img {
+    width: 25px;
+    height: 25px;
+}
+
+.content {
+    margin-left: 250px; /* Same width as the sidebar */
+    padding: 20px;
+}
+.top-bar-link li {
+    font-size: 20px;
+    display: flex;
+}
+
+.top-bar-link li a{
+    font-size: 18px;
+    display: flex;
+    color: rgb(25, 103, 210);
+    text-decoration: none;
+    padding: 10px 15px;
+    background-color: rgb(25, 103, 210, 0.25);
+    border-radius: 5px;
+}
+
+.top-bar-link li a:hover{
+    background-color: rgb(25, 103, 210, 0.3);
+}
+
+.post-link-2 {
+    display: flex;
+    gap: 20px;
+}
+.list-post-title h2{
+    text-align: left;
+    font-size: 22px;
+}
+
+.list-post-title {
+    min-width: 400px;
+}
+.items a {
+    text-decoration: none;
+    color: #343434;
 }
