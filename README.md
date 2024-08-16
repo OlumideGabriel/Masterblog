@@ -105,7 +105,7 @@ If you would like to contribute to the project, please fork the repository and s
 
 ## Contact
 
-If you have any questions or suggestions, feel free to open an issue on the GitHub repository or contact me at [your-email@example.com].
+If you have any questions or suggestions, feel free to open an issue on the GitHub repository or contact me at [talktoolumide@gmail.com].
 
 ```
 
