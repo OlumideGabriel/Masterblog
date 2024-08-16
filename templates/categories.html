@@ -22,6 +22,7 @@
 
     <div class="content" >
         <h1>Categories</h1>
+        <center><p>This category is used for developers mode. It helps developers expand the JSON data file for each blogpost</p></center>
         <a href="/new-category" class="icon-link">
             <div class="action-link">
                  <span>New Category</span>
@@ -36,8 +37,8 @@
 
                  <div class="item-list-controls">
                      <!--Update button-->
-                     <form action="/update/" method="get">
-                        <input type="hidden" name="post_id" >
+                     <form action="/update/{{ category }}" method="post">
+                        <input type="hidden" name="category" value='{{ category }}'>
                         <button class="update-button" type="submit">Update</button>
                     </form>
 
@@ -46,7 +47,6 @@
                         <button class="delete-button" type="submit">Delete</button>
                     </form>
                  </div>
-                    <!--Update button-->
              </div>
             {% endfor %}
         </div>

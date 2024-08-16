@@ -189,9 +189,24 @@ def del_category(category):
     return redirect(url_for('categories'))
 
 
+@app.route('/update/<category>', methods=['GET', 'POST'])
+def update_category(category):
+    blog_posts = read_data()
+    if request.method == 'POST':
+        new_key = request.form['category']
+        for post in blog_posts:
+            post[new_key] = post.pop(category, None)  # Remove 'likes' key if it exists
+        write_data(blog_posts)  # Write updated d
+        # Redirect back to the categories
+        return redirect(url_for('categories'))
+
+    # Redirect back to the homepage
+    return render_template('update_category.html', posts=blog_posts)
+
+
 @app.route('/categories', methods=['GET', 'POST'])
 def categories():
-    not_allowed = ['id', 'image']
+    not_allowed = ['id', 'image']  # Update list of categories you don't want to be manipulated
     blog_posts = read_data()
     if request.method == 'POST':
         # Write updated data back to JSON file
@@ -226,7 +241,7 @@ def page_not_found(error):
 # Route for handling other errors (e.g., 500)
 @app.errorhandler(500)
 def internal_server_error(error):
-    return render_template('500.html'), 500
+    return render_template('500.html'), 500 # Render internal error
 
 
 # Route for handling other errors (e.g., 400)
